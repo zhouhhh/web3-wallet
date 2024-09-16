@@ -8,12 +8,15 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vant": "^4.9.6",
+    "vue": "^3.2.13",
+    "web3": "^4.12.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "less": "^4.0.0",
-    "less-loader": "^8.0.0"
+    "less-loader": "^8.0.0",
+    "unplugin-vue-components": "^0.27.4"
   }
 }
