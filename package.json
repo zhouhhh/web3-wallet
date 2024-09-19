@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "ethereumjs-tx": "^2.1.2",
+    "node-polyfill-webpack-plugin": "^4.0.0",
     "vant": "^4.9.6",
     "vue": "^3.2.13",
     "web3": "^4.12.1"
