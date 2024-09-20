@@ -9,7 +9,6 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import Web3 from 'web3'
-import Tx from 'ethereumjs-tx'
 
 const web3 = new Web3(Web3.givenProvider || "wss://sepolia.infura.io/ws/v3/44c9b438af104f158bd4958888917597")
 
@@ -23,7 +22,6 @@ web3.eth.getBalance(address.value).then((res) => {
   balance.value = web3.utils.fromWei(res, 'ether')
   // web3.utils.fromWei('300000000', 'ether')
 })
-
 
 const send = async () => {
   //1.构建转账参数
@@ -50,12 +48,22 @@ const send = async () => {
   //gas估算
   const gas = await web3.eth.estimateGas(rawTx)
   rawTx.gas = gas
-  //ethereumjs-tx私钥加密
-  const tx = new Tx(rawTx)
-  tx.sign(bufferPriviteKey)
-  //生成 serializedTx
-  const serializedTx = tx.serialize().toString('hex')
-  console.log(serializedTx);
+  //私钥加密
+  const signedTx = await web3.eth.accounts.signTransaction(rawTx, bufferPriviteKey)
+  //发送签名后的交易
+  web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+    .on('transactionHash', (hash) => {
+      console.log('transactionHash-转账成功', hash);
+    })
+    .on('transaction', (confirmationNumber, receipt) => {
+      console.log('transaction第n个节点确认时触发', confirmationNumber, receipt);
+    })
+    .on('receipt', (receipt) => {
+      console.log('receipt-第一个节点确认时触发', receipt);
+    })
+    .on('error', (error) => {
+      console.log('error', error);
+    })
 }
 
 </script>
