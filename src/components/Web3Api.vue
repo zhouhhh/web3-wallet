@@ -31,13 +31,13 @@ import Web3 from 'web3'
 import logo from '@/assets/logo.png'
 const logoUrl = logo
 
-const web3 = new Web3(Web3.givenProvider || "wss://sepolia.infura.io/ws/v3/44c9b438af104f158bd4958888917597")
+const web3 = new Web3(Web3.givenProvider || "wss://sepolia.infura.io/ws/v3/44c9b438af104f158bd4958888917597") // 获取https://developer.metamask.io/key/active-endpoints
 
 //每次执行创建一个新账号
 // const account = web3.eth.accounts.create('1111')
 // console.log(account);
 
-const address = ref('0xEeD08E5908803112c09168e2D6cB64B588818f46')
+const address = ref('0xEeD08E5908803112c09168e2D6cB64B588818f46') // MetaMask账号
 const privateKey = ref('0x309442518df28bf1663e0429ddca744ae2efb404a1d2941238b6d891ea81f07d')
 const balance = ref('0')
 const loading = ref(false)
