@@ -35,10 +35,10 @@ const web3 = new Web3(Web3.givenProvider || "wss://sepolia.infura.io/ws/v3/44c9b
 
 //每次执行创建一个新账号
 // const account = web3.eth.accounts.create('1111')
-// console.log(account);
+// console.log(account); // 创建的帐号里会包括address和privateKey
 
 const address = ref('0xEeD08E5908803112c09168e2D6cB64B588818f46') // MetaMask账号
-const privateKey = ref('0x309442518df28bf1663e0429ddca744ae2efb404a1d2941238b6d891ea81f07d')
+const privateKey = ref('0x309442518df28bf1663e0429ddca744ae2efb404a1d2941238b6d891ea81f07d')// 到MetaMask对应账号的账户详情的Details查看
 const balance = ref('0')
 const loading = ref(false)
 
